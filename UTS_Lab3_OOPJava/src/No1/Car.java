@@ -1,76 +1,91 @@
 package No1;
 
-public class Car {
-    private String brand;
-    private String model;
-    private int year;
-    private double price;
+    import java.util.Scanner;
 
-    // Constructor >> brand, model, and year
-    public Car(String brand, String model, int year) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-    }
+    public class Car {
+        private String brand;
+        private String model;
+        private int year;
+        private double price;
+        private Scanner scanner;
 
-    // Constructor >> brand, model, year, and price
-    public Car(String brand, String model, int year, double price) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.price = price;
-    }
+        // Constructor>> brand, model, and year
+        public Car(String brand, String model, int year) {
+            this.brand = brand;
+            this.model = model;
+            this.year = year;
+            scanner = new Scanner(System.in);
+        }
 
-    // Getter & Setter untuk brand
-    public String getBrand() {
-        return brand;
-    }
+        // Constructor>> brand, model, year, and price
+        public Car(String brand, String model, int year, double price) {
+            this.brand = brand;
+            this.model = model;
+            this.year = year;
+            this.price = price;
+            scanner = new Scanner(System.in);
+        }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
+        // Getter & Setter untuk brand
+        public String getBrand() {
+            return brand;
+        }
 
-    // Getter & Setter untuk model
-    public String getModel() {
-        return model;
-    }
+        public void setBrand(String brand) {
+            this.brand = brand;
+        }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+        // Getter & Setter untuk model
+        public String getModel() {
+            return model;
+        }
 
-    // Getter & Setter untuk Tahun
-    public int getYear() {
-        return year;
-    }
+        public void setModel(String model) {
+            this.model = model;
+        }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+        // Getter & Setter untuk year
+        public int getYear() {
+            return year;
+        }
 
-    // Getter & Setter untuk Harga
-    public double getPrice() {
-        return price;
-    }
+        public void setYear(int year) {
+            if (year >= 1900 && year <= getCurrentYear()) {
+                this.year = year;
+            } else {
+                System.out.println("Tahun tidak valid.");
+            }
+        }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+        // Getter & Setter untuk price
+        public double getPrice() {
+            return price;
+        }
 
-    // Method overloading
-    public void displayInfo() {
-        System.out.println("Car Information:");
-        System.out.println("Brand: " + brand);
-        System.out.println("Model: " + model);
-        System.out.println("Year: " + year);
-    }
+        public void setPrice(double price) {
+            if (price > 0) {
+                this.price = price;
+            } else {
+                System.out.println("Harga harus positif.");
+            }
+        }
 
-    public void displayInfo(boolean includePrice) {
-        displayInfo();
-        if (includePrice) {
-            System.out.println("Price: $" + price);
+        // Method overloading
+        public void displayInfo() {
+            System.out.println("Car Information:");
+            System.out.println("Brand: " + brand);
+            System.out.println("Model: " + model);
+            System.out.println("Year: " + year);
+        }
+
+        public void displayInfo(boolean includePrice) {
+            displayInfo();
+            if (includePrice) {
+                System.out.println("Price: $" + price);
+            }
+        }
+
+        private int getCurrentYear() {
+            return 2023;
         }
     }
-
-}
-
