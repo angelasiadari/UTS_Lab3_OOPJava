@@ -1,5 +1,6 @@
 package No4;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Rumus {
@@ -18,22 +19,29 @@ public class Rumus {
             System.out.println("2. [Fisika] Rumus Tekanan");
             System.out.println("3. Keluar");
             System.out.print("Masukkan pilihan Anda (1/2/3): ");
-            int pilihan = scanner.nextInt();
 
-            switch (pilihan) {
-                case 1:
-                    runGeometricSeriesFormula();
-                    break;
-                case 2:
-                    runPressureFormula();
-                    break;
-                case 3:
-                    isRunning = false;
-                    break;
-                default:
-                    System.out.println("Pilihan tidak valid");
-                    break;
+            try {
+                int pilihan = scanner.nextInt();
+
+                switch (pilihan) {
+                    case 1:
+                        runGeometricSeriesFormula();
+                        break;
+                    case 2:
+                        runPressureFormula();
+                        break;
+                    case 3:
+                        isRunning = false;
+                        break;
+                    default:
+                        System.out.println("Pilihan tidak valid");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Input tidak valid. Masukkan angka.");
+                scanner.nextLine(); // Membersihkan buffer
             }
+
             System.out.println();
         }
 
@@ -45,12 +53,10 @@ public class Rumus {
 
         while (repeat) {
             System.out.println("Rumus Deret Geometri");
-            System.out.print("Masukkan suku pertama: ");
-            double sukuPertama = scanner.nextDouble();
-            System.out.print("Masukkan rasio: ");
-            double rasio = scanner.nextDouble();
-            System.out.print("Masukkan jumlah suku: ");
-            int jumlahSuku = scanner.nextInt();
+
+            double sukuPertama = getValidDoubleInput("Masukkan suku pertama: ");
+            double rasio = getValidDoubleInput("Masukkan rasio: ");
+            int jumlahSuku = getValidIntInput("Masukkan jumlah suku: ");
 
             double hasilDeretGeometri = hitungDeretGeometri(sukuPertama, rasio, jumlahSuku);
             System.out.println("Hasil jumlah " + jumlahSuku + " suku Deret Geometri: " + hasilDeretGeometri);
@@ -65,10 +71,9 @@ public class Rumus {
 
         while (repeat) {
             System.out.println("Rumus Tekanan");
-            System.out.print("Masukkan gaya (dalam Newton): ");
-            double gaya = scanner.nextDouble();
-            System.out.print("Masukkan luas permukaan (dalam meter pangkat dua): ");
-            double luasPermukaan = scanner.nextDouble();
+
+            double gaya = getValidDoubleInput("Masukkan gaya (dalam Newton): ");
+            double luasPermukaan = getValidDoubleInput("Masukkan luas permukaan (dalam meter pangkat dua): ");
 
             double tekanan = hitungTekanan(gaya, luasPermukaan);
             System.out.println("Tekanan: " + tekanan + " Pascal");
@@ -89,8 +94,63 @@ public class Rumus {
     }
 
     public boolean askForRepeat() {
-        System.out.print("Apakah Anda ingin mengulang program? (y/n): ");
-        String jawaban = scanner.next();
-        return jawaban.equalsIgnoreCase("y");
+        boolean valid = false;
+        boolean repeat = false;
+
+        while (!valid) {
+            System.out.print("Apakah Anda ingin mengulang program? (y/n): ");
+            String jawaban = scanner.next();
+
+            if (jawaban.equalsIgnoreCase("y")) {
+                valid = true;
+                repeat = true;
+            } else if (jawaban.equalsIgnoreCase("n")) {
+                valid = true;
+                repeat = false;
+            } else {
+                System.out.println("Input tidak valid. Masukkan 'y' untuk mengulang atau 'n' untuk keluar.");
+            }
+        }
+
+        return repeat;
+    }
+
+
+    public double getValidDoubleInput(String message) {
+        double input = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            System.out.print(message);
+
+            try {
+                input = scanner.nextDouble();
+                valid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Input tidak valid. Masukkan angka.");
+                scanner.nextLine();
+            }
+        }
+
+        return input;
+    }
+
+    public int getValidIntInput(String message) {
+        int input = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            System.out.print(message);
+
+            try {
+                input = scanner.nextInt();
+                valid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Input tidak valid. Masukkan angka.");
+                scanner.nextLine();
+            }
+        }
+
+        return input;
     }
 }
