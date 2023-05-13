@@ -6,7 +6,7 @@
 <br>Constructor: Constructor adalah metode khusus dalam class yang digunakan untuk menginisialisasi objek baru yang dibuat. Constructor dieksekusi saat objek dibuat.
 <br>Method Overloading: Method overloading terjadi saat sebuah class memiliki beberapa metode dengan nama yang sama, tetapi memiliki parameter yang berbeda. Metode yang dieksekusi tergantung pada argumen yang diberikan saat pemanggilan.
 <br>Method Setter dan Getter: Setter dan getter digunakan untuk mengubah dan mengambil nilai atribut objek. Setter mengubah nilai atribut, sedangkan getter mengambil nilai atribut.
-<img width="960" alt="No1" src="https://user-images.githubusercontent.com/114636840/236636415-04ed50f8-c5aa-4507-9787-7193fba8a348.png">
+<img width="960" alt="revisi 1" src="https://github.com/angelasiadari/UTS_Lab3_OOPJava/assets/114636840/9e8abfa5-36c5-435c-ae9a-ddff320762ac">
 
 **Soal No 2**
 <img width="960" alt="No2" src="https://user-images.githubusercontent.com/114636840/236636426-504dafe7-8ee1-4201-aea1-da8214565f94.png">
@@ -21,4 +21,9 @@ GENAP
 
 <br>Fisika
 
-<img width="960" alt="fisika" src="https://user-images.githubusercontent.com/114636840/236636692-916cbcf0-72b8-4a95-aeed-6de98aeed898.png">
+<img width="960" alt="fisika" src="https://user-images.githubusercontent.com/114636840/236636692-916cbcf0-72b8-4a95-aeed-6de98aeed898.png"><br>
+
+
+<br> REVISI <br>
+<img width="960" alt="revisi 4" src="https://github.com/angelasiadari/UTS_Lab3_OOPJava/assets/114636840/e0adde45-9859-40a0-9c95-9045d03f9168"><br>
+
