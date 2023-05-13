@@ -14,19 +14,21 @@ package No1;
 //CONTOH CLASS >> Main
 public class Main {
     public static void main(String[] args) {
-        //OBJECT
+        // Creating objects using constructors
         Car car1 = new Car("Toyota", "Camry", 2021);
         Car car2 = new Car("Honda", "Civic", 2022, 25000);
 
-        //METHOD SETTER
+        // Using setters to modify object attributes with input validation
         car1.setYear(2020);
-        car2.setPrice(27000);
+        car1.setYear(1899); // Invalid year, will display error message
+        car1.setYear(2025); // Invalid year, will display error message
+        car2.setPrice(-5000); // Invalid price, will display error message
 
-        //METHOD GETTERS
+        // Using getters to access object attributes
         String brand = car1.getBrand();
         double price = car2.getPrice();
 
-        //METHOD OVERLOADING
+        // Calling methods with method overloading
         car1.displayInfo();
         car2.displayInfo(true);
     }
